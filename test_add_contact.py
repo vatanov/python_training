@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
-import time, unittest
+import unittest
 
 def is_alert_present(wd):
     try:
@@ -16,19 +15,20 @@ class test_add_contact(unittest.TestCase):
         self.wd.implicitly_wait(60)
     
     def test_test_add_contact(self):
-        success = True
         wd = self.wd
-        # Open home page
-        wd.get("http://localhost/addressbook/edit.php")
-        # Login
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
-        wd.find_element_by_id("LoginForm").click()
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        self.open_home_page(wd)
+        self.login(wd)
+        self.create_new_contact(wd)
+        self.go_to_home_page(wd)
+        self.logout(wd)
+
+    def logout(self, wd):
+        wd.find_element_by_link_text("Logout").click()
+
+    def go_to_home_page(self, wd):
+        wd.find_element_by_link_text("home").click()
+
+    def create_new_contact(self, wd):
         # Create new contact
         # Go to "Add new" link
         wd.find_element_by_link_text("add new").click()
@@ -103,12 +103,20 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys("rgfdgfdgtfgthtyhygjyhfth")
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-        # Go to home page
-        wd.find_element_by_link_text("home").click()
-        # Logout
-        wd.find_element_by_link_text("Logout").click()
-        self.assertTrue(success)
-    
+
+    def login(self, wd):
+        wd.find_element_by_name("user").click()
+        wd.find_element_by_name("user").clear()
+        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_id("LoginForm").click()
+        wd.find_element_by_name("pass").click()
+        wd.find_element_by_name("pass").clear()
+        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+
+    def open_home_page(self, wd):
+        wd.get("http://localhost/addressbook/edit.php")
+
     def tearDown(self):
         self.wd.quit()
 
