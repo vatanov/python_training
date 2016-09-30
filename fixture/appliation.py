@@ -135,6 +135,7 @@ class Application:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.go_to_home_page()
 
     def open_edit_page(self):
         wd = self.wd
