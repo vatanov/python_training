@@ -14,7 +14,6 @@ class ContactHelper:
         self.change_field_value("address", contact.address)
         self.change_field_value("home", contact.home)
         self.change_field_value("mobile", contact.mobile)
-        wd.find_element_by_name("theform").click()
         self.change_field_value("work", contact.work)
         self.change_field_value("fax", contact.fax)
         self.change_field_value("email", contact.email)
