@@ -2,7 +2,7 @@ import re
 from random import randrange
 
 
-def test_phones_on_home_page(app):
+def test_name_on_home_page(app):
     contacts = app.contact.get_contact_list()
     index = randrange(len(contacts))
     contact_from_home_page = app.contact.get_contact_list()[index]
