@@ -24,11 +24,23 @@ class ContactHelper:
         self.change_field_value("email2", contact.email2)
         self.change_field_value("email3", contact.email3)
         self.change_field_value("homepage", contact.homepage)
-        wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[%s]" % (contact.bday)).click()
-        wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % (contact.bmonth)).click()
+        if contact.bday is not None:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[%s]" % (contact.bday)).click()
+        else:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[13]").click()
+        if contact.bmonth is not None:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[%s]" % (contact.bmonth)).click()
+        else:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[8]").click()
         self.change_field_value("byear", contact.byear)
-        wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % (contact.aday)).click()
-        wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[%s]" % (contact.amonth)).click()
+        if contact.aday is not None:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[%s]" % (contact.aday)).click()
+        else:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[3]//option[10]").click()
+        if contact.amonth is not None:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[%s]" % (contact.amonth)).click()
+        else:
+            wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[6]").click()
         self.change_field_value("ayear", contact.ayear)
         self.change_field_value("address2", contact.address2)
         self.change_field_value("phone2", contact.phone2)
