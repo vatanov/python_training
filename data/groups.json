@@ -2,43 +2,22 @@
   {
     "py/object": "model.group.Group",
     "name": "",
-    "id": null,
+    "footer": "",
     "header": "",
-    "footer": ""
+    "id": null
   },
   {
     "py/object": "model.group.Group",
-    "name": "nameL2~.",
-    "id": null,
-    "header": "headerv0",
-    "footer": "footer>'"
+    "name": "name$r?",
+    "footer": "footerQ",
+    "header": "header M~!B:Yy=5O m",
+    "id": null
   },
   {
     "py/object": "model.group.Group",
-    "name": "name`A-'",
-    "id": null,
-    "header": "header,p) ",
-    "footer": "footer= cO"
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "nameQuc2}!%'T",
-    "id": null,
-    "header": "header+",
-    "footer": "footer2["
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "namefPc3",
-    "id": null,
-    "header": "header4%74F n  t/9",
-    "footer": "footerB\"\\y%*ZU} W"
-  },
-  {
-    "py/object": "model.group.Group",
-    "name": "nameU",
-    "id": null,
-    "header": "header]-*% ",
-    "footer": "footer5|hNy5;T"
+    "name": "namedP.",
+    "footer": "footer\"Q",
+    "header": "header-V% Z1H9",
+    "id": null
   }
 ]
