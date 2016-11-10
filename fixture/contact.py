@@ -34,6 +34,7 @@ class ContactHelper:
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[6]").is_selected():
             wd.find_element_by_xpath("//div[@id='content']/form/select[4]//option[6]").click()
         self.change_field_value("ayear", contact.ayear)
+
         self.change_field_value("address2", contact.address2)
         self.change_field_value("phone2", contact.phone2)
         self.change_field_value("notes", contact.notes)
