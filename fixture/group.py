@@ -98,7 +98,6 @@ class GroupHelper:
     def select_group_by_id(self, id):
         wd = self.app.wd
 
-
     def return_to_groups_page(self):
         wd = self.app.wd
         wd = self.app.wd

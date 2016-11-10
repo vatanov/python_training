@@ -24,6 +24,18 @@ class DbFixture:
             cursor.close()
         return list
 
+    def get_group_ids(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("select group_id from group_list")
+            for row in cursor:
+                (id) = row
+                list.append(Group(id=str(id)))
+        finally:
+            cursor.close()
+        return list
+
     def get_contact_list(self):
         list = []
         cursor = self.connection.cursor()
@@ -38,6 +50,28 @@ class DbFixture:
         finally:
             cursor.close()
         return list
+
+    def get_contacts_in_group(self, group_id):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("""SELECT addressbook.id, addressbook.firstname, addressbook.lastname, addressbook.address,
+                           addressbook.home, addressbook.mobile, addressbook.work, addressbook.email, addressbook.email2,
+                           addressbook.email3, addressbook.phone2 FROM addressbook
+                           JOIN address_in_groups WHERE addressbook.id = address_in_groups.id
+                           AND addressbook.deprecated = '0000-00-00 00:00:00' AND address_in_groups.group_id=%s""" % group_id)
+            for row in cursor:
+                (id, firstname, lastname, address, home, mobile, work, email, email2, email3, phone2) = row
+                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname, address = address, home = home,
+                                    mobile = mobile, work = work, email = email, email2 = email2, email3 = email3,
+                                    phone2 = phone2))
+        finally:
+            cursor.close()
+        return list
+
+
+
+
 
 
     def destroy(self):
