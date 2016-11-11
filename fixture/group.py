@@ -1,4 +1,7 @@
 from model.group import Group
+from fixture.db import DbFixture
+import random
+import re
 
 
 class GroupHelper:
@@ -121,3 +124,12 @@ class GroupHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
+
+    def get_random_group_id(self):
+        db = DbFixture(host="127.0.0.1", name="addressbook", user="root", password="")
+        if len(db.get_group_list()) > 0:
+            random_group = random.choice(db.get_group_ids())
+            id = int(re.sub("[(),]", "", random_group.id))
+        else:
+            id = "[none]"
+        return id

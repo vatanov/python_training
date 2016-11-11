@@ -30,7 +30,7 @@ def random_string(prefix, maxlen):
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
-def get_random_group_id():
+def random_group_id():
     db = DbFixture(host="127.0.0.1", name="addressbook", user="root", password="")
     if len(db.get_group_list()) > 0:
         random_group = random.choice(db.get_group_ids())
@@ -38,6 +38,7 @@ def get_random_group_id():
     else:
         rand_group_id = "[none]"
     return rand_group_id
+
 
 def random_day():
     return random.randrange(1, 34, 1)
@@ -49,7 +50,7 @@ def random_month():
 testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title="", company="",
                     address="", home="", mobile="", work="", fax="", email="", email2="", email3="",
                     homepage="", bday="1", bmonth="1", byear="", aday="1", amonth="1", ayear="",
-                    address2="", phone2="", notes="", contact_in_group=get_random_group_id())] + [
+                    address2="", phone2="", notes="", contact_in_group=random_group_id())] + [
            Contact(firstname=random_string("f_name", 5), middlename=random_string("m_name", 5),
                     lastname=random_string("l_name", 5), nickname=random_string("n_name", 5),
                     title=random_string("title", 5), company=random_string("company", 5),
@@ -59,7 +60,7 @@ testdata = [Contact(firstname="", middlename="", lastname="", nickname="", title
                     homepage=random_string("h_page", 15), bday=random_day(), bmonth=random_month(),
                     byear=random_string("", 4), aday=random_day(), amonth=random_month(), ayear=random_string("", 4),
                     address2=random_string("addr", 20), phone2=random_string("phone_2", 5),
-                    notes=random_string("notes", 30), contact_in_group=get_random_group_id())
+                    notes=random_string("notes", 30), contact_in_group=random_group_id())
     for i in range(n)
 ]
 
